@@ -14,7 +14,134 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      menu_items: {
+        Row: {
+          available: boolean | null
+          category: string
+          created_at: string | null
+          description: string | null
+          id: string
+          image_url: string | null
+          modifiers: Json | null
+          name: string
+          price: number
+          updated_at: string | null
+        }
+        Insert: {
+          available?: boolean | null
+          category: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          modifiers?: Json | null
+          name: string
+          price: number
+          updated_at?: string | null
+        }
+        Update: {
+          available?: boolean | null
+          category?: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          modifiers?: Json | null
+          name?: string
+          price?: number
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          created_at: string | null
+          eta: string | null
+          id: string
+          items: Json
+          location: Json | null
+          payment_method: string
+          status: string | null
+          subtotal: number
+          tax: number | null
+          total: number
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          eta?: string | null
+          id?: string
+          items: Json
+          location?: Json | null
+          payment_method: string
+          status?: string | null
+          subtotal: number
+          tax?: number | null
+          total: number
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          eta?: string | null
+          id?: string
+          items?: Json
+          location?: Json | null
+          payment_method?: string
+          status?: string | null
+          subtotal?: number
+          tax?: number | null
+          total?: number
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "orders_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string | null
+          email: string
+          full_name: string
+          id: string
+          loyalty_points: number | null
+          phone: string | null
+          roll_number: string
+          updated_at: string | null
+          wallet_balance: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          full_name: string
+          id: string
+          loyalty_points?: number | null
+          phone?: string | null
+          roll_number: string
+          updated_at?: string | null
+          wallet_balance?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          loyalty_points?: number | null
+          phone?: string | null
+          roll_number?: string
+          updated_at?: string | null
+          wallet_balance?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
